@@ -14,25 +14,25 @@ const HeaderMenu = ({ activeMenu, children }) => {
                 {
                     title: "Accounts",
                     items: [
-                        { label: "Cent Account", href: "/trading/cent-account" },
-                        { label: "Classic Account", href: "/trading/classic-account" },
-                        { label: "Pro Account", href: "/trading/pro-account" },
-                        { label: "ECN Account", href: "/trading/ecn-account" },
-                        { label: "Demo Account", href: "/trading/demo-account" }
+                        { label: "Cent Account", href: "https://www.leoprime.com/cent-account" },
+                        { label: "Classic Account", href: "/classic-account" },
+                        { label: "Pro Account", href: "https://www.leoprime.com/pro-account" },
+                        { label: "ECN Account", href: "https://www.leoprime.com/ecn-account" },
+                        { label: "Demo Account", href: "/demo-account" }
                     ]
                 },
                 {
                     title: "Conditions",
                     items: [
-                        { label: "Margin & Leverage Rules", href: "/trading/margin-rules" },
-                        { label: "Deposit & Withdrawals", href: "/trading/deposit" }
+                        { label: "Margin & Leverage Rules", href: "https://www.leoprime.com/margin-leverage-rules" },
+                        { label: "Deposit & Withdrawals", href: "/deposit-and-withdraw" }
                     ]
                 },
                 {
                     title: "Promotions",
                     items: [
-                        { label: "50% Welcome Bonus", href: "/trading/welcome-bonus" },
-                        { label: "Demo Contest", href: "/trading/demo-contest" }
+                        { label: "50% Welcome Bonus", href: "https://www.leoprime.com/50bonus" },
+                        { label: "Demo Contest", href: "https://www.leoprime.com/contest" }
                     ]
                 }
             ]
@@ -43,12 +43,12 @@ const HeaderMenu = ({ activeMenu, children }) => {
             submenu: [
                 {
                     items: [
-                        { label: "Forex", href: "/markets/forex" },
-                        { label: "Commodities", href: "/markets/commodities" },
-                        { label: "Stocks", href: "/markets/stocks" },
-                        { label: "Indices", href: "/markets/indices" },
-                        { label: "Crypto", href: "/markets/crypto" },
-                        { label: "Energies", href: "/markets/energies" }
+                        { label: "Forex", href: "/forex-trading" },
+                        { label: "Commodities", href: "#" },
+                        { label: "Stocks", href: "https://www.leoprime.com/trading-instruments-stocks" },
+                        { label: "Indices", href: "https://www.leoprime.com/trading-instruments-indices" },
+                        { label: "Crypto", href: "#" },
+                        { label: "Energies", href: "https://www.leoprime.com/trading-instruments-energies" }
                     ]
                 }
             ]
@@ -60,14 +60,14 @@ const HeaderMenu = ({ activeMenu, children }) => {
                 {
                     title: "Desktop",
                     items: [
-                        { label: "Meta trader 4", href: "/trading/cent-account" },
+                        { label: "Meta trader 4", href: "/trading-platform" },
                     ]
                 },
                 {
                     title: "Mobile",
                     items: [
-                        { label: "Meta trader 4 Mobile", href: "/trading/margin-rules" },
-                        { label: "Leo all in one app", href: "/trading/deposit" }
+                        { label: "Meta trader 4 Mobile", href: "#" },
+                        { label: "Leo all in one app", href: "#" }
                     ]
                 },
             ]
@@ -78,11 +78,11 @@ const HeaderMenu = ({ activeMenu, children }) => {
             submenu: [
                 {
                     items: [
-                        { label: "Technical analysis", href: "/markets/forex" },
-                        { label: "Economic Calendar", href: "/markets/commodities" },
-                        { label: "Trading Calculator", href: "/markets/stocks" },
-                        { label: "Client Sentiment", href: "/markets/indices" },
-                        { label: "VPS Hosting", href: "/markets/crypto" },
+                        { label: "Technical analysis", href: "#" },
+                        { label: "Economic Calendar", href: "https://www.leoprime.com/economic-calendar" },
+                        { label: "Trading Calculator", href: "#" },
+                        { label: "Client Sentiment", href: "https://www.leoprime.com/client-sentiment" },
+                        { label: "VPS Hosting", href: "https://www.leoprime.com/vps-hosting" },
                     ]
                 }
             ]
@@ -94,108 +94,111 @@ const HeaderMenu = ({ activeMenu, children }) => {
                 {
                     title: "About",
                     items: [
-                        { label: "About us", href: "/trading/cent-account" },
-                        { label: "Why leoprime", href: "/trading/cent-account" },
-                        { label: "Company news", href: "/trading/cent-account" },
-                        { label: "Contact us", href: "/trading/cent-account" },
+                        { label: "About us", href: "/about-us" },
+                        { label: "Why leoprime", href: "/why-leoprime" },
+                        { label: "Company news", href: "https://news.leoprime.com/" },
+                        { label: "Contact us", href: "/contact-us" },
                     ]
                 },
                 {
                     title: "Corporate",
                     items: [
-                        { label: "Safety of funds", href: "/trading/margin-rules" },
-                        { label: "Legal documents", href: "/trading/deposit" }
+                        { label: "Safety of funds", href: "#" },
+                        { label: "Legal documents", href: "#" }
                     ]
                 },
             ]
         },
-        { label: "Partner", href: "/partner", isActive: activeMenu === "Partner" }
+        { label: "Partner", href: "/introducing-broker", isActive: activeMenu === "Partner" }
     ];
 
     const handleMenuEnter = (menuLabel) => {
+        clearTimeout(window.menuTimeout); // Clear any previous timeout
         setHoveredMenu(menuLabel);
     };
 
     const handleMenuLeave = () => {
-        setHoveredMenu(null);
+        window.menuTimeout = setTimeout(() => {
+            setHoveredMenu(null);
+        }, 100); // Small delay (200ms) to prevent accidental closing
     };
-    console.log("HOVERED MEU",hoveredMenu)
+
 
     return (
-        <div className={styles.Container} style={hoveredMenu && hoveredMenu !== "Home" && hoveredMenu !== "Partner" ? { background: "#F5F5F5", height: "300px" } : { background: "transparent" }}>
-            <img style={{ width: "50px", height: "50px" }} src="https://site-assets.plasmic.app/84548756506ff2faa88b11aecfc0b44c.svg" />
+        <div className={styles.Container} style={hoveredMenu && hoveredMenu !== "Home" && hoveredMenu !== "Partner" ? { background: "#F5F5F5", } : { background: "transparent" }}>
+            <Link href={"/"}><img style={{ width: "50px", height: "50px" }} src="https://site-assets.plasmic.app/84548756506ff2faa88b11aecfc0b44c.svg" /></Link>
             <div className={styles.HeaderMenuFlex}>
-            <div className={styles.headerMenu}>
-                <div className={styles.menuContainer}>
-                    {menuData.map((menuItem, index) => (
-                        <div
-                            key={index}
-                            className={`${styles.menuItem} ${menuItem.submenu ? styles.hasSubmenu : ""} ${menuItem.isActive ? styles.active : ""}`}
-                            onMouseEnter={() => handleMenuEnter(menuItem.label)}
-                            onMouseLeave={handleMenuLeave}
-                        >
-                            <Link href={menuItem.href || "#"} className={styles.menuLink}>
-                                <span className={menuItem.isActive ? styles.activeText : ""}>
-                                    {menuItem.label}
-                                </span>
-                            </Link>
-                        </div>
-                    ))}
-                </div>
+                <div className={styles.headerMenu}>
+                    <div className={styles.menuContainer}>
+                        {menuData.map((menuItem, index) => (
+                            <div
+                                key={index}
+                                className={`${styles.menuItem} ${menuItem.submenu ? styles.hasSubmenu : ""} ${menuItem.isActive ? styles.active : ""}`}
+                                onMouseEnter={() => handleMenuEnter(menuItem.label)}
+                                onMouseLeave={handleMenuLeave}
+                            >
+                                <Link href={menuItem.href || "#"} className={styles.menuLink}>
+                                    <span className={menuItem.isActive ? styles.activeText : ""}>
+                                        {menuItem.label}
+                                    </span>
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
 
-                {/* Submenu Container */}
-                {menuData
-                    .filter((menuItem) => menuItem.submenu && hoveredMenu === menuItem.label)
-                    .map((menuItem, index) => (
-                        <div
-                            key={index}
-                            className={styles.megaMenu}
-                            onMouseEnter={() => handleMenuEnter(menuItem.label)}
-                            onMouseLeave={handleMenuLeave}
-                        >
-                            {/* Submenu Section */}
-                            <div className={styles.submenuSection}>
-                                {menuItem.submenu.map((sub, subIndex) => (
-                                    <div key={subIndex} className={styles.megaColumn}>
-                                        <h3>{sub.title}</h3>
-                                        <ul>
-                                            {sub.items.map((item, itemIndex) => (
-                                                <li key={itemIndex}>
-                                                    <Link href={item.href} className={item.href === activeMenu ? styles.active : ""}>
-                                                        {item.label}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
+                    {/* Submenu Container */}
+                    {menuData
+                        .filter((menuItem) => menuItem.submenu && hoveredMenu === menuItem.label)
+                        .map((menuItem, index) => (
+                            <div
+                                key={index}
+                                className={styles.megaMenu}
+                                onMouseEnter={() => handleMenuEnter(menuItem.label)}
+                            // onMouseLeave={handleMenuLeave}
+                            >
+                                {/* Submenu Section */}
+                                <div className={styles.submenuSection}>
+                                    {menuItem.submenu.map((sub, subIndex) => (
+                                        <div key={subIndex} className={styles.megaColumn}>
+                                            <h3>{sub.title}</h3>
+                                            <ul>
+                                                {sub.items.map((item, itemIndex) => (
+                                                    <li key={itemIndex}>
+                                                        <Link href={item.href} className={item.href === activeMenu ? styles.active : ""}>
+                                                            {item.label}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Fixed Column (Always last) */}
+                                <div className={`${styles.megaColumn} ${styles.fixedColumn}`}>
+                                    <p>Trade anywhere, anytime from our mobile app</p>
+                                    <img src="https://site-assets.plasmic.app/94759ca717a1bc5ed407e20bac348d07.svg" alt="Mobile App" />
+                                    <img src="https://site-assets.plasmic.app/af1036e1db328cb0ff9b70b5dc8df44c.svg" alt="Mobile App" />
+                                </div>
+
+                                {/* Contact Section */}
+                                <div className={styles.contactSection}>
+                                    <div className={styles.socialLinks}>
+                                        <a href="#" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                        <a href="#" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                        <a href="#" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                        <a href="#" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                        <a href="#" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                        <a href="#" target="_blank">LinkedIn<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
                                     </div>
-                                ))}
-                            </div>
-
-                            {/* Fixed Column (Always last) */}
-                            <div className={`${styles.megaColumn} ${styles.fixedColumn}`}>
-                                <p>Trade anywhere, anytime from our mobile app</p>
-                                <img src="https://site-assets.plasmic.app/94759ca717a1bc5ed407e20bac348d07.svg" alt="Mobile App" />
-                                <img src="https://site-assets.plasmic.app/af1036e1db328cb0ff9b70b5dc8df44c.svg" alt="Mobile App" />
-                            </div>
-
-                            {/* Contact Section */}
-                            <div className={styles.contactSection}>
-                                <div className={styles.socialLinks}>
-                                    <a href="#" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                    <a href="#" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                    <a href="#" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                    <a href="#" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                    <a href="#" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                    <a href="#" target="_blank">LinkedIn<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-            </div>
-            {/* Button */}
-            <div>
-                {children}
-            </div>
+                        ))}
+                </div>
+                {/* Button */}
+                <div>
+                    {children}
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,155 @@
+/* Header Menu */
+.headerMenu {
+    background-color: transparent;
+    padding: 5px 10px;
+  }
+  
+  .menuContainer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  /* Menu Links */
+  .menuLink {
+    color: #6F6F6F;
+    font-family: "Lato", sans-serif;
+    font-size: 20px;
+    line-height: 35px;
+    mix-blend-mode: normal;
+    pointer-events: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    white-space: pre-wrap;
+    user-select: text;
+    text-decoration-line: none;
+    text-overflow: clip;
+    padding: 0px;
+    cursor: pointer;
+  }
+
+  
+  /* Mega Menu */
+  .hasSubmenu {
+    position: relative;
+  }
+  .active {
+    background: linear-gradient(to top right, rgba(93, 8, 183, 0.1) 0%, rgba(234, 40, 145, 0.1) 100%), #EEEEEE;
+    border-radius: 12px;
+    padding: 5px 15px;
+}
+.activeText {
+    background: linear-gradient(to right, #5D08B7 0%, #DE3C98 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 100%;
+    background-repeat: repeat;
+}
+  .megaMenu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0; 
+    background: #F5F5F5;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    min-width: 1204px;
+    flex-wrap: wrap;
+    display: none;
+    justify-content: flex-start;
+    max-width: 100%; /* Ensure it doesn't overflow the screen */
+    box-sizing: border-box; /* Include padding in width calculations */
+  }
+  .submenuSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust gap between submenu columns */
+    flex: 1 1 auto; /* This makes submenuSection take available space */
+  }
+  .megaMenu ul li{
+    text-decoration: none;
+}
+.megaMenu ul li a{
+    text-decoration: none;
+    color:#838383;
+}
+.megaMenu ul{
+      padding-inline-start: 0 ;
+    list-style-type: none;
+  }
+  .megaMenuDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .hasSubmenu:hover .megaMenu {
+    display: flex; /* Show on Hover */
+  }
+  
+  /* Mega Menu Columns */
+  .megaColumns {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .megaColumn {
+    flex: 1 1 200px; /* Allow columns to grow but limit to a minimum width */
+    margin-bottom: 20px;
+    min-width: 200px; /* Ensure a minimum width for each column */
+    max-width: 33%; 
+  }
+  .megaColumn h3{
+    font-size: 20px;
+    color: #5E5E5E;
+  }
+  
+  .fixedColumn {
+    padding: 1rem;
+    text-align: left;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width:30%;
+    flex: 0 0 300px; /* Fixed width for the fixed column */
+    margin-left: 20px; /* Space between the submenu and the fixed column */
+  }
+  .fixedColumn p{
+    margin-bottom: 0;
+  }
+  .fixedColumn img{
+    width:170px;
+    height:50px;
+  }
+  
+  .contactSection{
+    width: 100%;
+    padding: 40px 0;
+  }
+  /* Social Links */
+  .socialLinks {
+    display: flex;
+    justify-content: start;
+    gap: 30px;
+  }
+  .socialLinks img{
+    width: 16px;
+    height: 16px;
+  }
+  .socialLinks a{
+    text-decoration: none;
+    color: #838383;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-bottom: 1px solid #494949;
+  }
+  
+  

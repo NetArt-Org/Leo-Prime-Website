@@ -1,7 +1,6 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import ContactForm from "./components/ContactForm";
 import HeaderMenu from "./components/HeaderMenu";
-import Header from "./components/Header";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -35,6 +34,7 @@ PLASMIC.registerComponent(ContactForm, {
 PLASMIC.registerComponent(HeaderMenu, {
   name: 'HeaderMenu',
   props: {
-    activeMenu:"string"
+    activeMenu:"string",
+    children:"slot"
   },
 });

@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./HeaderMenu.module.css";
 import Link from "next/link";
 
-const HeaderMenu = ({ activeMenu }) => {
+const HeaderMenu = ({ activeMenu, children }) => {
     const [hoveredMenu, setHoveredMenu] = useState(null);
 
     const menuData = [
@@ -96,8 +96,8 @@ const HeaderMenu = ({ activeMenu }) => {
                     items: [
                         { label: "About us", href: "/trading/cent-account" },
                         { label: "Why leoprime", href: "/trading/cent-account" },
-                        { label: "Company news", href: "/trading/cent-account" },   
-                        { label: "Contact us", href: "/trading/cent-account" },   
+                        { label: "Company news", href: "/trading/cent-account" },
+                        { label: "Contact us", href: "/trading/cent-account" },
                     ]
                 },
                 {
@@ -119,83 +119,81 @@ const HeaderMenu = ({ activeMenu }) => {
     const handleMenuLeave = () => {
         setHoveredMenu(null);
     };
+    console.log("HOVERED MEU",hoveredMenu)
 
     return (
-        <div className={styles.headerMenu}>
-            <div className={styles.menuContainer}>
-                {menuData.map((menuItem, index) =>
-                    menuItem.submenu ? (
+        <div className={styles.Container} style={hoveredMenu && hoveredMenu !== "Home" && hoveredMenu !== "Partner" ? { background: "#F5F5F5", height: "300px" } : { background: "transparent" }}>
+            <img style={{ width: "50px", height: "50px" }} src="https://site-assets.plasmic.app/84548756506ff2faa88b11aecfc0b44c.svg" />
+            <div className={styles.headerMenu}>
+                <div className={styles.menuContainer}>
+                    {menuData.map((menuItem, index) => (
                         <div
                             key={index}
-                            className={`${styles.menuItem} ${styles.hasSubmenu} ${menuItem.isActive ? styles.active : ""}`}
+                            className={`${styles.menuItem} ${menuItem.submenu ? styles.hasSubmenu : ""} ${menuItem.isActive ? styles.active : ""}`}
                             onMouseEnter={() => handleMenuEnter(menuItem.label)}
                             onMouseLeave={handleMenuLeave}
                         >
-                            <span className={`${styles.menuLink} ${menuItem.isActive ? styles.active : ""}`}>
-                                <span className={`${menuItem.isActive ? styles.activeText : ""}`}>{menuItem.label}</span>
-                            </span>
-                            {(hoveredMenu === menuItem.label || hoveredMenu === null) && (
-                                <div
-                                    className={styles.megaMenu}
-                                    onMouseEnter={() => handleMenuEnter(menuItem.label)}
-                                    onMouseLeave={handleMenuLeave}
-                                >
-                                    {/* Submenu Section */}
-                                    <div className={styles.submenuSection}>
-                                        {menuItem.submenu.map((sub, subIndex) => (
-                                            <div key={subIndex} className={styles.megaColumn}>
-                                                <h3>{sub.title}</h3>
-                                                <ul>
-                                                    {sub.items.map((item, itemIndex) => (
-                                                        <li key={itemIndex}>
-                                                            <Link
-                                                                href={item.href}
-                                                                className={item.href === activeMenu ? styles.active : ""}
-                                                            >
-                                                                {item.label}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* Fixed Column (Always last) */}
-                                    <div className={`${styles.megaColumn} ${styles.fixedColumn}`}>
-                                        <p>Trade anywhere, anytime from our mobile app</p>
-                                        <img src="https://site-assets.plasmic.app/94759ca717a1bc5ed407e20bac348d07.svg" alt="Mobile App"
-                                        />
-                                        <img src="https://site-assets.plasmic.app/af1036e1db328cb0ff9b70b5dc8df44c.svg" alt="Mobile App"
-                                        />
-                                    </div>
-
-                                    {/* Contact Section */}
-                                    <div className={styles.contactSection}>
-                                        <div className={styles.socialLinks}>
-                                            <a href="#" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                            <a href="#" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                            <a href="#" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                            <a href="#" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                            <a href="#" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                            <a href="#" target="_blank">Linkedin<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-
-                        </div>
-                    ) : (
-                        <div key={index} className={`${menuItem.isActive ? styles.active : ""}`}>
-                            <Link
-                                href={menuItem.href}
-                                className={`${styles.menuLink} ${menuItem.isActive ? styles.activeText : ""}`}
-                            >
-                                {menuItem.label}
+                            <Link href={menuItem.href || "#"} className={styles.menuLink}>
+                                <span className={menuItem.isActive ? styles.activeText : ""}>
+                                    {menuItem.label}
+                                </span>
                             </Link>
                         </div>
-                    )
-                )}
+                    ))}
+                </div>
+
+                {/* Submenu Container */}
+                {menuData
+                    .filter((menuItem) => menuItem.submenu && hoveredMenu === menuItem.label)
+                    .map((menuItem, index) => (
+                        <div
+                            key={index}
+                            className={styles.megaMenu}
+                            onMouseEnter={() => handleMenuEnter(menuItem.label)}
+                            onMouseLeave={handleMenuLeave}
+                        >
+                            {/* Submenu Section */}
+                            <div className={styles.submenuSection}>
+                                {menuItem.submenu.map((sub, subIndex) => (
+                                    <div key={subIndex} className={styles.megaColumn}>
+                                        <h3>{sub.title}</h3>
+                                        <ul>
+                                            {sub.items.map((item, itemIndex) => (
+                                                <li key={itemIndex}>
+                                                    <Link href={item.href} className={item.href === activeMenu ? styles.active : ""}>
+                                                        {item.label}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Fixed Column (Always last) */}
+                            <div className={`${styles.megaColumn} ${styles.fixedColumn}`}>
+                                <p>Trade anywhere, anytime from our mobile app</p>
+                                <img src="https://site-assets.plasmic.app/94759ca717a1bc5ed407e20bac348d07.svg" alt="Mobile App" />
+                                <img src="https://site-assets.plasmic.app/af1036e1db328cb0ff9b70b5dc8df44c.svg" alt="Mobile App" />
+                            </div>
+
+                            {/* Contact Section */}
+                            <div className={styles.contactSection}>
+                                <div className={styles.socialLinks}>
+                                    <a href="#" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                    <a href="#" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                    <a href="#" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                    <a href="#" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                    <a href="#" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                    <a href="#" target="_blank">LinkedIn<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+            </div>
+            {/* Button */}
+            <div>
+                {children}
             </div>
         </div>
     );

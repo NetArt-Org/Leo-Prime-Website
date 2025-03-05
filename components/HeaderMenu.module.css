@@ -1,3 +1,12 @@
+.Container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around ;
+  padding:20px 0;
+  position: sticky;
+    top: 0; /* Keeps it at the top */
+    z-index: 1000;
+}
 /* Header Menu */
 .headerMenu {
     background-color: transparent;
@@ -50,24 +59,23 @@
 }
   .megaMenu {
     position: absolute;
-    top: 60px;
+    top: 70px;
     left: 0;
     right: 0; 
     background: #F5F5F5;
-    padding: 1.5rem;
-    display: flex;
+    padding: 1.5rem 80px 1.5rem 320px;
     flex-direction: row;
-    border-radius: 5px;
+    border-radius: 14px;
     min-width: 1204px;
     flex-wrap: wrap;
-    display: none;
+    display: flex;
     justify-content: flex-start;
     max-width: 100%; /* Ensure it doesn't overflow the screen */
     box-sizing: border-box; /* Include padding in width calculations */
   }
   .submenuSection {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 20px; /* Adjust gap between submenu columns */
     flex: 1 1 auto; /* This makes submenuSection take available space */
   }

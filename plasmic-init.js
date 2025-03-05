@@ -1,6 +1,7 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import ContactForm from "./components/ContactForm";
 import HeaderMenu from "./components/HeaderMenu";
+import SubscribeForm from "./components/SubscribeForm";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -28,6 +29,11 @@ export const PLASMIC = initPlasmicLoader({
 
 PLASMIC.registerComponent(ContactForm, {
   name: 'ContactForm',
+  props: {
+  },
+});
+PLASMIC.registerComponent(SubscribeForm, {
+  name: 'SubscribeForm',
   props: {
   },
 });

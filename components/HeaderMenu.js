@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./HeaderMenu.module.css";
 import Link from "next/link";
 
@@ -112,24 +112,46 @@ const HeaderMenu = ({ activeMenu, children }) => {
         { label: "Partner", href: "/introducing-broker", isActive: activeMenu === "Partner" }
     ];
 
+    const headerRef = useRef(null); // Ref to the header container
+    let closeTimeout = null;
+
+    // Close submenu after a delay
     const handleMenuEnter = (menuLabel) => {
-        clearTimeout(window.menuTimeout); // Clear any previous timeout
+        if (closeTimeout) {
+            clearTimeout(closeTimeout); // Prevent submenu from closing too quickly
+        }
         setHoveredMenu(menuLabel);
     };
 
     const handleMenuLeave = () => {
-        window.menuTimeout = setTimeout(() => {
+        closeTimeout = setTimeout(() => {
             setHoveredMenu(null);
-        }, 100); // Small delay (200ms) to prevent accidental closing
+        }, 300); // Adds a delay before closing submenu
     };
 
+    // Handle the mouse leave from the header and submenu to close the submenu
+    const handleDocumentClick = (e) => {
+        if (headerRef.current && !headerRef.current.contains(e.target)) {
+            setHoveredMenu(null); // Close submenu if mouse is outside the header
+        }
+    };
+
+    useEffect(() => {
+        // Attach event listener to the document
+        document.addEventListener("mousedown", handleDocumentClick);
+
+        // Clean up the event listener when component unmounts
+        return () => {
+            document.removeEventListener("mousedown", handleDocumentClick);
+        };
+    }, []);
 
     return (
         <div className={styles.Container} style={hoveredMenu && hoveredMenu !== "Home" && hoveredMenu !== "Partner" ? { background: "#F5F5F5", } : { background: "transparent" }}>
             <Link href={"/"}><img style={{ width: "50px", height: "50px" }} src="https://site-assets.plasmic.app/84548756506ff2faa88b11aecfc0b44c.svg" /></Link>
             <div className={styles.HeaderMenuFlex}>
                 <div className={styles.headerMenu}>
-                    <div className={styles.menuContainer}>
+                    <div ref={headerRef} className={styles.menuContainer}>
                         {menuData.map((menuItem, index) => (
                             <div
                                 key={index}

@@ -124,6 +124,7 @@ const HeaderMenu = ({ activeMenu, children }) => {
     return (
         <div className={styles.Container} style={hoveredMenu && hoveredMenu !== "Home" && hoveredMenu !== "Partner" ? { background: "#F5F5F5", height: "300px" } : { background: "transparent" }}>
             <img style={{ width: "50px", height: "50px" }} src="https://site-assets.plasmic.app/84548756506ff2faa88b11aecfc0b44c.svg" />
+            <div className={styles.HeaderMenuFlex}>
             <div className={styles.headerMenu}>
                 <div className={styles.menuContainer}>
                     {menuData.map((menuItem, index) => (
@@ -194,6 +195,7 @@ const HeaderMenu = ({ activeMenu, children }) => {
             {/* Button */}
             <div>
                 {children}
+            </div>
             </div>
         </div>
     );

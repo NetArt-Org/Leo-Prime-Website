@@ -7,16 +7,25 @@
     top: 0; /* Keeps it at the top */
     z-index: 1000;
 }
+.HeaderMenuFlex{
+  display: flex;
+    gap: 30px;
+    width: 75%;
+    justify-content: flex-end;
+}
 /* Header Menu */
 .headerMenu {
     background-color: transparent;
-    padding: 5px 10px;
   }
   
   .menuContainer {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
+    padding: 5px 10px;
+    background: linear-gradient(#F6F6F6A6, #F6F6F6A6) padding-box, linear-gradient(to bottom, #D7D7D7 0%, #DDDDDD 100%) border-box !important;
+    border: 1px solid transparent;
+    border-radius: 14px;
   }
   
   /* Menu Links */
@@ -59,11 +68,12 @@
 }
   .megaMenu {
     position: absolute;
-    top: 70px;
+    top: 80px;
+    z-index: 2;
     left: 0;
     right: 0; 
     background: #F5F5F5;
-    padding: 1.5rem 80px 1.5rem 320px;
+    padding: 30px 80px 1.5rem 340px;
     flex-direction: row;
     border-radius: 14px;
     min-width: 1204px;
@@ -96,10 +106,10 @@
     justify-content: space-between;
   }
   
-  .hasSubmenu:hover .megaMenu {
-    display: flex; /* Show on Hover */
-  }
-  
+  .hasSubmenu:hover .megaMenu,
+.megaMenu:hover {
+  display: flex;
+}
   /* Mega Menu Columns */
   .megaColumns {
     display: flex;
@@ -139,7 +149,7 @@
   
   .contactSection{
     width: 100%;
-    padding: 40px 0;
+    padding: 50px 0 50px 30px;
   }
   /* Social Links */
   .socialLinks {

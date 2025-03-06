@@ -1,8 +1,8 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import ContactForm from "./components/ContactForm";
-import HeaderMenu from "./components/HeaderMenu";
 import SubscribeForm from "./components/SubscribeForm";
 import Navigation from "./components/Navigation";
+import SwiperSlider from "./components/SwiperSlider";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -43,10 +43,9 @@ PLASMIC.registerComponent(Navigation, {
   props: {
   },
 });
-PLASMIC.registerComponent(HeaderMenu, {
-  name: 'HeaderMenu',
+PLASMIC.registerComponent(SwiperSlider, {
+  name: 'SwiperSlider',
   props: {
-    activeMenu:"string",
-    children:"slot"
+    children: 'slot',
   },
 });

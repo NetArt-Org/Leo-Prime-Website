@@ -16,8 +16,8 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, se
   return (
     <>
       <li
-        onMouseEnter={() => setIsDropdownOpen(true)}
-        onMouseLeave={() => setIsDropdownOpen(false)}
+         onMouseEnter={() => children && setIsDropdownOpen(true)}
+         onMouseLeave={() => children && setIsDropdownOpen(false)}
       >
         <div className="nav_item_content">
           <Link

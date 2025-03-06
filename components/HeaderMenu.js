@@ -148,7 +148,7 @@ const HeaderMenu = ({ activeMenu, children }) => {
 
     return (
         <div className={styles.Container} style={hoveredMenu && hoveredMenu !== "Home" && hoveredMenu !== "Partner" ? { background: "#F5F5F5", } : { background: "transparent" }}>
-            <Link href={"/"}><img style={{ width: "50px", height: "50px" }} src="https://site-assets.plasmic.app/84548756506ff2faa88b11aecfc0b44c.svg" /></Link>
+            <Link href={"/"}><img style={{ width: "50px", height: "50px" }} src="/logo.svg" /></Link>
             <div className={styles.HeaderMenuFlex}>
                 <div className={styles.headerMenu}>
                     <div ref={headerRef} className={styles.menuContainer}>

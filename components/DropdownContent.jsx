@@ -24,6 +24,11 @@ const DropdownContent = ({ submenuscontent, setIsDrawerOpen, handleClick }) => {
           </section>
         </React.Fragment>
       ))}
+      <div className='fixedColumn'>
+        <p>Trade anywhere, anytime from our mobile app</p>
+        <img src="https://site-assets.plasmic.app/94759ca717a1bc5ed407e20bac348d07.svg" alt="Mobile App" />
+        <img src="https://site-assets.plasmic.app/af1036e1db328cb0ff9b70b5dc8df44c.svg" alt="Mobile App" />
+      </div>
     </div>
   );
 };

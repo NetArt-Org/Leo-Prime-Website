@@ -1,7 +1,7 @@
 import { menuData } from '../menuData';
 import MenuItem from './MenuItem';
 
-const MegaMenu = ({ handleToggle, clicked, setIsDrawerOpen,setIsDropdownOpen  }) => {
+const MegaMenu = ({ handleToggle, clicked, setIsDrawerOpen, setIsDropdownOpen }) => {
   return (
     <div className="nav__container">
       <nav>
@@ -14,7 +14,7 @@ const MegaMenu = ({ handleToggle, clicked, setIsDrawerOpen,setIsDropdownOpen  })
                   label,
                   href,
                   children,
-                  setIsDrawerOpen,setIsDropdownOpen 
+                  setIsDrawerOpen, setIsDropdownOpen
                 }}
                 onToggle={() => {
                   handleToggle && handleToggle(index);
@@ -26,6 +26,8 @@ const MegaMenu = ({ handleToggle, clicked, setIsDrawerOpen,setIsDropdownOpen  })
           })}
         </ul>
       </nav>
+      <div >
+      </div>
     </div>
   );
 };

@@ -14,48 +14,58 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, se
   };
 
   return (
-    <li
-      onMouseEnter={() => setIsDropdownOpen(true)}
-      onMouseLeave={() => setIsDropdownOpen(false)}
-    >
-      <div className="nav_item_content">
-        <Link
-          href={href}
-          className={pathname === href ? "active" : ""}
-          onClick={() => {
-            setIsDrawerOpen && setIsDrawerOpen(false);
-            handleClick();
-          }}
-        >
-          {label}
-        </Link>
-        {children && (
-          <button
-            className="md:hidden"
-            onClick={onToggle}
-            aria-label="Toggle dropdown"
-            aria-haspopup="menu"
-            aria-expanded={active ? "true" : "false"}
+    <>
+      <li
+        onMouseEnter={() => setIsDropdownOpen(true)}
+        onMouseLeave={() => setIsDropdownOpen(false)}
+      >
+        <div className="nav_item_content">
+          <Link
+            href={href}
+            className={pathname === href ? "active" : ""}
+            onClick={() => {
+              setIsDrawerOpen && setIsDrawerOpen(false);
+              handleClick();
+            }}
           >
-            {active ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-          </button>
-        )}
-      </div>
-      {children && (
-        <div
-          role="menu"
-          className={`dropdown ${active ? "h-auto" : "h-0 overflow-hidden md:h-auto"}`}
-        >
-          <Container>
-            <DropdownContent
-              submenuscontent={children}
-              setIsDrawerOpen={setIsDrawerOpen}
-              handleClick={handleClick}
-            />
-          </Container>
+            {label}
+          </Link>
+          {children && (
+            <button
+              className="md:hidden"
+              onClick={onToggle}
+              aria-label="Toggle dropdown"
+              aria-haspopup="menu"
+              aria-expanded={active ? "true" : "false"}
+            >
+              {active ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </button>
+          )}
         </div>
-      )}
-    </li>
+        {children && (
+          <div
+            role="menu"
+            className={`dropdown ${active ? "h-auto" : "h-0 overflow-hidden md:h-auto"}`}
+          >
+            <Container>
+              <DropdownContent
+                submenuscontent={children}
+                setIsDrawerOpen={setIsDrawerOpen}
+                handleClick={handleClick}
+              />
+              <div className="contactSection" >
+                <a className="socialLinks" href="#" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="#" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="#" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="#" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="#" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="#" target="_blank">LinkedIn<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+              </div>
+            </Container>
+          </div>
+        )}
+      </li>
+    </>
   );
 };
 

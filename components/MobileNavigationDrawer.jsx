@@ -56,7 +56,7 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
         </div>
         <div>
           <MegaMenu handleToggle={handleToggle} clicked={clicked} setIsDrawerOpen={setIsDrawerOpen} />
-          <div className="flex" style={{ gap: "20px",display:"flex",margin:"20px 20px 20px 0" }}>
+          <div className="flex" style={{ gap: "5px",display:"flex",margin:"20px 20px 20px 0" }}>
           <Link href="#" className='header-btn gradient-border'>Sign in</Link>
           <Link href="#" className='header-btn gradient-banner-button'>Register</Link>
             </div>

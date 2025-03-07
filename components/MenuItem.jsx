@@ -6,23 +6,23 @@ import Container from "./Container";
 import DropdownContent from "./DropdownContent";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, setIsDropdownOpen }) => {
+const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, setIsDropdownOpen,activeMenu }) => {
   const pathname = usePathname();
 
   const handleClick = () => {
     document.activeElement?.blur();
   };
-
   return (
     <>
       <li
-         onMouseEnter={() => children && setIsDropdownOpen(true)}
-         onMouseLeave={() => children && setIsDropdownOpen(false)}
+        onMouseEnter={() => children && setIsDropdownOpen(true)}
+        onMouseLeave={() => children && setIsDropdownOpen(false)}
       >
-        <div className="nav_item_content">
+        <div className={`nav_item_content ${activeMenu == label ? "menu-active" : "main-menu"}`}>
           <Link
             href={href}
-            className={pathname === href ? "active" : ""}
+            className={`${pathname === href ? "active" : ""}`}
+            // className={pathname === href ? "active" : "" }
             onClick={() => {
               setIsDrawerOpen && setIsDrawerOpen(false);
               handleClick();

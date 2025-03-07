@@ -1,7 +1,7 @@
 import { menuData } from '../menuData';
 import MenuItem from './MenuItem';
 
-const MegaMenu = ({ handleToggle, clicked, setIsDrawerOpen, setIsDropdownOpen }) => {
+const MegaMenu = ({ handleToggle, clicked, setIsDrawerOpen, setIsDropdownOpen,activeMenu }) => {
   return (
     <div className="nav__container">
       <nav>
@@ -20,6 +20,7 @@ const MegaMenu = ({ handleToggle, clicked, setIsDrawerOpen, setIsDropdownOpen })
                   handleToggle && handleToggle(index);
                   setIsDropdownOpen(clicked !== index); // Update state
                 }}
+                activeMenu={activeMenu}
                 active={clicked === index}
               />
             );

@@ -6,13 +6,14 @@ import { AlignJustify } from 'lucide-react';
 import MegaMenu from './MegaMenu';
 import MobileNavigationDrawer from './MobileNavigationDrawer';
 
-const Navigation = () => {
+const Navigation = ({ }) => {
+  const activeMenu = "Home"
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const drawerButtonRef = useRef(null);
-console.log("SET IS DROPDOWN",isDropdownOpen)
+  console.log("SET IS DROPDOWN", isDropdownOpen)
   return (
-    <header className={`nav__header_mobile md:nav__header  ${isDropdownOpen ? "header-gray" :null}`}>
+    <header className={`nav__header_mobile md:nav__header  ${isDropdownOpen ? "header-gray" : null}`}>
       <Container>
         <div className="toolbar">
           <button
@@ -28,12 +29,12 @@ console.log("SET IS DROPDOWN",isDropdownOpen)
             <img src="/logo.svg" alt="Logo" />
           </Link>
 
-          <div className="hidden md:flex flex" style={{ gap: "20px" }}>
-            <MegaMenu setIsDropdownOpen={setIsDropdownOpen} />
-            <div className="hidden md:flex flex" style={{ gap: "20px" }}>
+          <div className="hidden md:flex flex" style={{ gap: "20px",position:"relative" }}>
+            <MegaMenu setIsDropdownOpen={setIsDropdownOpen} activeMenu={activeMenu} />
+            <div className="hidden md:flex flex" style={{ gap: "5px" }}>
               <Link href="#" className='header-btn gradient-border'>Sign in</Link>
               <Link href="#" className='header-btn gradient-banner-button'>Register</Link>
-               </div>
+            </div>
           </div>
           {/* <UserProfile /> */}
 

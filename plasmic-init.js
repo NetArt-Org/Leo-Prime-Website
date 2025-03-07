@@ -41,6 +41,7 @@ PLASMIC.registerComponent(SubscribeForm, {
 PLASMIC.registerComponent(Navigation, {
   name: 'Navigation',
   props: {
+    activeMenu:'string'
   },
 });
 PLASMIC.registerComponent(SwiperSlider, {

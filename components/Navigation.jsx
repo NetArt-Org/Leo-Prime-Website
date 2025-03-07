@@ -6,8 +6,7 @@ import { AlignJustify } from 'lucide-react';
 import MegaMenu from './MegaMenu';
 import MobileNavigationDrawer from './MobileNavigationDrawer';
 
-const Navigation = ({ }) => {
-  const activeMenu = "Home"
+const Navigation = ({activeMenu }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const drawerButtonRef = useRef(null);

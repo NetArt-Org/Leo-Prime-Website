@@ -31,9 +31,9 @@ console.log("SET IS DROPDOWN",isDropdownOpen)
           <div className="hidden md:flex flex" style={{ gap: "20px" }}>
             <MegaMenu setIsDropdownOpen={setIsDropdownOpen} />
             <div className="hidden md:flex flex" style={{ gap: "20px" }}>
-              <button className="plasmic_default__all plasmic_default__button root_reset_ctBdLGgruJ63zzSx8ZZKZu plasmic_default_styles plasmic_mixins plasmic_tokens Button2__root__t2Tq1 gradient-border Button2__roottype_border__t2Tq1SPhhO __wab_instance Homepage__button2__cqMfX" type="button"><div className="__wab_flex-container ρfc"><div className="plasmic_default__all plasmic_default__div Button2__contentContainer__i2Ar2"><span className="__wab_slot ρs Button2__slotTargetChildren__kqVkt"><div className="plasmic_default__all plasmic_default__div __wab_text Homepage__text___43BsT">Sign in </div></span></div></div></button>
-              <button className="plasmic_default__all plasmic_default__button root_reset_ctBdLGgruJ63zzSx8ZZKZu plasmic_default_styles plasmic_mixins plasmic_tokens Button2__root__t2Tq1 gradient-banner-button  Button2__roottype_gradientBannerBtn__t2Tq1Lm9L3 __wab_instance Homepage__button2___2ETMv" type="button"><div className="__wab_flex-container ρfc"><div className="plasmic_default__all plasmic_default__div Button2__contentContainer__i2Ar2"><span className="__wab_slot ρs Button2__slotTargetChildren__kqVkt Button2__slotTargetChildrentype_gradientBannerBtn__kqVktLm9L3"><div className="plasmic_default__all plasmic_default__div __wab_text Homepage__text__dtbLn">Register</div></span></div></div></button>
-            </div>
+              <Link href="#" className='header-btn gradient-border'>Sign in</Link>
+              <Link href="#" className='header-btn gradient-banner-button'>Register</Link>
+               </div>
           </div>
           {/* <UserProfile /> */}
 

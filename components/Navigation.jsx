@@ -6,7 +6,7 @@ import { AlignJustify } from 'lucide-react';
 import MegaMenu from './MegaMenu';
 import MobileNavigationDrawer from './MobileNavigationDrawer';
 
-const Navigation = ({activeMenu }) => {
+const Navigation = ({ activeMenu }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const drawerButtonRef = useRef(null);
@@ -24,13 +24,14 @@ const Navigation = ({activeMenu }) => {
             {/* Mobile Hamburger menu */}
             <AlignJustify />
           </button>
-          <Link className="logo__link" href="/">
-            <img src="/logo.svg" alt="Logo" />
+          <Link className="logo__link logo-container" href="/">
+            <img src="/logo.svg" alt="Logo" className='logo-icon'/>
+            <div class="logo-text" style={{color:"#5D08B7",fontWeight:"normal"}}>leoprime</div>
           </Link>
 
-          <div className="hidden md:flex flex" style={{ gap: "20px",position:"relative" }}>
+          <div className="hidden md:flex flex menu-gap" style={{ position: "relative",alignItems:"center" }}>
             <MegaMenu setIsDropdownOpen={setIsDropdownOpen} activeMenu={activeMenu} />
-            <div className="hidden md:flex flex" style={{ gap: "5px" }}>
+            <div className="hidden md:flex flex">
               <Link href="#" className='header-btn gradient-border'>Sign in</Link>
               <Link href="#" className='header-btn gradient-banner-button'>Register</Link>
             </div>

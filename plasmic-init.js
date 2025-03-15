@@ -38,6 +38,7 @@ PLASMIC.registerComponent(SubscribeForm, {
   props: {
   },
 });
+
 PLASMIC.registerComponent(Navigation, {
   name: 'Navigation',
   props: {

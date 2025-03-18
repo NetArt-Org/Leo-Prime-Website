@@ -37,12 +37,12 @@ export const menuData = [
       {
         heading: "Trading Instruments",
         submenu: [
-          { label: "Forex", href: "/forex-trading" },
-          { label: "Commodities", href: "#" },
-          { label: "Stocks", href: "https://www.leoprime.com/trading-instruments-stocks" },
-          { label: "Indices", href: "https://www.leoprime.com/trading-instruments-indices" },
+          { label: "Forex", href: "/trading-instrument-forex" },
+          { label: "Spot Metals", href: "/trading-instruments-spot-metal" },
+          { label: "Stocks", href: "/trading-instruments-stocks" },
+          { label: "Indices", href: "/trading-instruments-indices" },
           { label: "Crypto", href: "#" },
-          { label: "Energies", href: "https://www.leoprime.com/trading-instruments-energies" }
+          { label: "Energies", href: "/trading-instruments-energies" }
         ]
       }
     ]

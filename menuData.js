@@ -7,10 +7,10 @@ export const menuData = [
       {
         heading: "Accounts",
         submenu: [
-          { label: "Cent Account", href: "https://www.leoprime.com/cent-account" },
+          { label: "Cent Account", href: "/cent-account" },
           { label: "Classic Account", href: "/classic-account" },
-          { label: "Pro Account", href: "https://www.leoprime.com/pro-account" },
-          { label: "ECN Account", href: "https://www.leoprime.com/ecn-account" },
+          { label: "Pro Account", href: "/pro-account" },
+          { label: "ECN Account", href: "/ecn-account" },
           { label: "Demo Account", href: "/demo-account" }
         ]
       },
@@ -41,7 +41,7 @@ export const menuData = [
           { label: "Spot Metals", href: "/trading-instruments-spot-metal" },
           { label: "Stocks", href: "/trading-instruments-stocks" },
           { label: "Indices", href: "/trading-instruments-indices" },
-          { label: "Crypto", href: "#" },
+          { label: "Crypto", href: "/trading-instruments-cryptocurrencies" },
           { label: "Energies", href: "/trading-instruments-energies" }
         ]
       }

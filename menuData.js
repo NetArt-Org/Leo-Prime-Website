@@ -17,7 +17,7 @@ export const menuData = [
       {
         heading: "Conditions",
         submenu: [
-          { label: "Margin & Leverage Rules", href: "https://www.leoprime.com/margin-leverage-rules" },
+          { label: "Margin & Leverage Rules", href: "/margin-leverage-rules" },
           { label: "Deposit & Withdrawals", href: "/deposit-and-withdraw" }
         ]
       },
@@ -73,11 +73,11 @@ export const menuData = [
       {
         heading: "Trading Tools",
         submenu: [
-          { label: "Technical Analysis", href: "#" },
-          { label: "Economic Calendar", href: "https://www.leoprime.com/economic-calendar" },
-          { label: "Trading Calculator", href: "#" },
-          { label: "Client Sentiment", href: "https://www.leoprime.com/client-sentiment" },
-          { label: "VPS Hosting", href: "https://www.leoprime.com/vps-hosting" }
+          { label: "Technical Analysis", href: "/technical-analysis" },
+          { label: "Economic Calendar", href: "/economic-calendar" },
+          { label: "Forex Calculator", href: "/forex-calculator" },
+          { label: "Client Sentiment", href: "/client-sentiment" },
+          { label: "VPS Hosting", href: "/vps-hosting" }
         ]
       }
     ]

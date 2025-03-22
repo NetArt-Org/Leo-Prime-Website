@@ -64,6 +64,8 @@ export default function ContactForm() {
         borderBottom: "2px solid #ccc",
         outline: "none",
         fontSize: "16px",
+        color:"#5D08B7",
+        fontWeight:"500"
     };
 
     const errorStyle = {
@@ -120,67 +122,90 @@ export default function ContactForm() {
         cursor: "pointer",
         position: "relative",
     });
+    const floatingInputContainerStyle = {
+        position: "relative",
+        width: "100%",
+    };
+    
+    const floatingInputStyle = {
+        ...inputStyle, // Reusing your existing input styles
+        width: "100%",
+        background: "transparent",
+        borderBottom: "2px solid #ccc",
+        transition: "all 0.3s ease",
+    };
+    
+    const floatingLabelStyle = {
+        position: "absolute",
+        left: "5px",
+        top: "50%",
+        transform: "translateY(-50%)",
+        fontSize: "16px",
+        transition: "all 0.3s ease",
+        pointerEvents: "none",
+    };
+    
     return (
-        <form onSubmit={onSubmit} style={formStyle}>
-            {[
-                { name: "firstName", placeholder: "First name*" },
-                { name: "secondName", placeholder: "Second name*" },
-                { name: "email", placeholder: "Email*" },
-                { name: "number", placeholder: "Phone number*", type: "tel" },
-                { name: "country", placeholder: "Country*" },
-                { name: "state", placeholder: "State*" },
-                { name: "preferredContactTime", placeholder: "Preferred contact time*" },
-            ].map(({ name, placeholder, type = "text" }) => (
-                <div key={name} style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
-                    <input
-                        style={inputStyle}
-                        type={type}
-                        name={name}
-                        placeholder={placeholder}
-                        value={formData[name]}
-                        onChange={handleChange}
-                    />
-                    {errors[name] && <span style={errorStyle}>{errors[name]}</span>}
-                </div>
-            ))}
-
-            {/* Radio Button for Existing Client - Now Styled with Gradient */}
-            <div style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
-                <p style={labelStyle}>Are you an existing client?*</p>
-                <div style={radioContainerStyle}>
-                    <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
-                        <input
-                            type="radio"
-                            name="existingClient"
-                            value="Yes"
-                            onChange={handleChange}
-                            style={{ position: "absolute", opacity: 0 }}
-                        />
-                        <div style={customRadioStyle(formData.existingClient === "Yes")}></div>
-                        Yes
-                    </label>
-
-                    <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
-                        <input
-                            type="radio"
-                            name="existingClient"
-                            value="No"
-                            onChange={handleChange}
-                            style={{ position: "absolute", opacity: 0 }}
-                        />
-                        <div style={customRadioStyle(formData.existingClient === "No")}></div>
-                        No
-                    </label>
-                </div>
-                {errors.existingClient && <span style={errorStyle}>{errors.existingClient}</span>}
+        <form onSubmit={onSubmit} style={formStyle} className="contact-form">
+    {[
+        { name: "firstName", placeholder: "First name*" },
+        { name: "secondName", placeholder: "Second name*" },
+        { name: "email", placeholder: "Email*" },
+        { name: "number", placeholder: "Phone number*", type: "tel" },
+        { name: "country", placeholder: "Country*" },
+        { name: "state", placeholder: "State*" },
+        { name: "preferredContactTime", placeholder: "Preferred contact time*" },
+    ].map(({ name, placeholder, type = "text" }) => (
+        <div key={name} style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
+            <div style={floatingInputContainerStyle}>
+                <input
+                    type={type}
+                    name={name}
+                    style={floatingInputStyle}
+                    value={formData[name]}
+                    onChange={handleChange}
+                    required
+                />
+                <label
+                    style={{
+                        ...floatingLabelStyle,
+                        top: formData[name] ? "0px" : "50%",
+                        fontSize: formData[name] ? "12px" : "16px",
+                        color: formData[name] ? "#5D08B7" : "#999",
+                    }}
+                >
+                    {placeholder}
+                </label>
             </div>
+            {errors[name] && <span style={errorStyle}>{errors[name]}</span>}
+        </div>
+    ))}
 
-            {/* Submit Button */}
-            <div style={buttonContainerStyle}>
-                <button type="submit" style={buttonStyle}>
-                    Send enquiry
-                </button>
-            </div>
-        </form>
+    {/* Radio Button for Existing Client */}
+    <div style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
+        <p style={labelStyle}>Are you an existing client?*</p>
+        <div style={radioContainerStyle}>
+            <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
+                <input type="radio" name="existingClient" value="Yes" onChange={handleChange} />
+                <div style={customRadioStyle(formData.existingClient === "Yes")}></div>
+                Yes
+            </label>
+
+            <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
+                <input type="radio" name="existingClient" value="No" onChange={handleChange} />
+                <div style={customRadioStyle(formData.existingClient === "No")}></div>
+                No
+            </label>
+        </div>
+        {errors.existingClient && <span style={errorStyle}>{errors.existingClient}</span>}
+    </div>
+
+    {/* Submit Button */}
+    <div style={buttonContainerStyle}>
+        <button type="submit" style={buttonStyle}>
+            Send enquiry
+        </button>
+    </div>
+</form>    
     );
 }

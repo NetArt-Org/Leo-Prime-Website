@@ -102,7 +102,11 @@ export default function ContactForm() {
         color: "white",
         backgroundOrigin: "border-box",  /* Ensures the background covers the padding */
         backgroundClip: "border-box",
-        width: "100%"
+        width: "100%",
+        fontFamily: "Poppins, sans-serif",
+        fontSize: "16px",
+        fontWeight: "500",
+        lineHeight: "30px",
     };
     const customRadioStyle = (checked) => ({
         width: "12px",

@@ -13,6 +13,8 @@ export default function ContactForm() {
     });
 
     const [errors, setErrors] = useState({});
+    const [focusedField, setFocusedField] = useState(""); 
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -145,67 +147,71 @@ export default function ContactForm() {
         pointerEvents: "none",
     };
     
+    
     return (
         <form onSubmit={onSubmit} style={formStyle} className="contact-form">
-    {[
-        { name: "firstName", placeholder: "First name*" },
-        { name: "secondName", placeholder: "Second name*" },
-        { name: "email", placeholder: "Email*" },
-        { name: "number", placeholder: "Phone number*", type: "tel" },
-        { name: "country", placeholder: "Country*" },
-        { name: "state", placeholder: "State*" },
-        { name: "preferredContactTime", placeholder: "Preferred contact time*" },
-    ].map(({ name, placeholder, type = "text" }) => (
-        <div key={name} style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
-            <div style={floatingInputContainerStyle}>
-                <input
-                    type={type}
-                    name={name}
-                    style={floatingInputStyle}
-                    value={formData[name]}
-                    onChange={handleChange}
-                    required
-                />
-                <label
-                    style={{
-                        ...floatingLabelStyle,
-                        top: formData[name] ? "0px" : "50%",
-                        fontSize: formData[name] ? "12px" : "16px",
-                        color: formData[name] ? "#5D08B7" : "#999",
-                    }}
-                >
-                    {placeholder}
+        {[
+            { name: "firstName", placeholder: "First name*" },
+            { name: "secondName", placeholder: "Second name*" },
+            { name: "email", placeholder: "Email*" },
+            { name: "number", placeholder: "Phone number*", type: "tel" },
+            { name: "country", placeholder: "Country*" },
+            { name: "state", placeholder: "State*" },
+            { name: "preferredContactTime", placeholder: "Preferred contact time*" },
+        ].map(({ name, placeholder, type = "text" }) => (
+            <div key={name} style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
+                <div style={floatingInputContainerStyle}>
+                    <input
+                        type={type}
+                        name={name}
+                        style={floatingInputStyle}
+                        value={formData[name]}
+                        onChange={handleChange}
+                        onFocus={() => setFocusedField(name)}
+                        onBlur={() => setFocusedField("")}
+                        required
+                    />
+                    <label
+                        style={{
+                            ...floatingLabelStyle,
+                            top: formData[name] || focusedField === name ? "0px" : "50%",
+                            fontSize: formData[name] || focusedField === name ? "12px" : "16px",
+                            color: focusedField === name || formData[name] ? "#5D08B7" : "#6F6F6F",
+                        }}
+                    >
+                        {placeholder}
+                    </label>
+                </div>
+                {errors[name] && <span style={errorStyle}>{errors[name]}</span>}
+            </div>
+        ))}
+    
+        {/* Radio Button for Existing Client */}
+        <div style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
+            <p style={labelStyle}>Are you an existing client?*</p>
+            <div style={radioContainerStyle}>
+                <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
+                    <input type="radio" name="existingClient" value="Yes" onChange={handleChange} />
+                    <div style={customRadioStyle(formData.existingClient === "Yes")}></div>
+                    Yes
+                </label>
+    
+                <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
+                    <input type="radio" name="existingClient" value="No" onChange={handleChange} />
+                    <div style={customRadioStyle(formData.existingClient === "No")}></div>
+                    No
                 </label>
             </div>
-            {errors[name] && <span style={errorStyle}>{errors[name]}</span>}
+            {errors.existingClient && <span style={errorStyle}>{errors.existingClient}</span>}
         </div>
-    ))}
-
-    {/* Radio Button for Existing Client */}
-    <div style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
-        <p style={labelStyle}>Are you an existing client?*</p>
-        <div style={radioContainerStyle}>
-            <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
-                <input type="radio" name="existingClient" value="Yes" onChange={handleChange} />
-                <div style={customRadioStyle(formData.existingClient === "Yes")}></div>
-                Yes
-            </label>
-
-            <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
-                <input type="radio" name="existingClient" value="No" onChange={handleChange} />
-                <div style={customRadioStyle(formData.existingClient === "No")}></div>
-                No
-            </label>
+    
+        {/* Submit Button */}
+        <div style={buttonContainerStyle}>
+            <button type="submit" style={buttonStyle}>
+                Send enquiry
+            </button>
         </div>
-        {errors.existingClient && <span style={errorStyle}>{errors.existingClient}</span>}
-    </div>
-
-    {/* Submit Button */}
-    <div style={buttonContainerStyle}>
-        <button type="submit" style={buttonStyle}>
-            Send enquiry
-        </button>
-    </div>
-</form>    
+    </form>
+      
     );
 }

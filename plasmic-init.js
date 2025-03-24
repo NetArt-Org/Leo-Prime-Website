@@ -3,6 +3,7 @@ import ContactForm from "./components/ContactForm";
 import SubscribeForm from "./components/SubscribeForm";
 import Navigation from "./components/Navigation";
 import SwiperSlider from "./components/SwiperSlider";
+import VerticalAccordion from "./components/VerticalAccordion";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -38,7 +39,12 @@ PLASMIC.registerComponent(SubscribeForm, {
   props: {
   },
 });
-
+PLASMIC.registerComponent(VerticalAccordion, {
+  name: 'VerticalAccordion',
+  props: {
+    accordionData:'object'
+  },
+});
 PLASMIC.registerComponent(Navigation, {
   name: 'Navigation',
   props: {

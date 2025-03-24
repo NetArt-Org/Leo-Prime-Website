@@ -149,6 +149,7 @@ export default function ContactForm() {
     
     
     return (
+        <>
         <form onSubmit={onSubmit} style={formStyle} className="contact-form">
         {[
             { name: "firstName", placeholder: "First name*" },
@@ -212,6 +213,6 @@ export default function ContactForm() {
             </button>
         </div>
     </form>
-      
+       </>
     );
 }

@@ -66,7 +66,6 @@ export default function ContactForm() {
         borderBottom: "2px solid #ccc",
         outline: "none",
         fontSize: "16px",
-        color:"#5D08B7",
         fontWeight:"500"
     };
 
@@ -161,7 +160,7 @@ export default function ContactForm() {
             { name: "preferredContactTime", placeholder: "Preferred contact time*" },
         ].map(({ name, placeholder, type = "text" }) => (
             <div key={name} style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
-                <div style={floatingInputContainerStyle}>
+                <div className="input-container" style={floatingInputContainerStyle}>
                     <input
                         type={type}
                         name={name}
@@ -177,8 +176,8 @@ export default function ContactForm() {
                             ...floatingLabelStyle,
                             top: formData[name] || focusedField === name ? "0px" : "50%",
                             fontSize: formData[name] || focusedField === name ? "12px" : "16px",
-                            color: focusedField === name || formData[name] ? "#5D08B7" : "#6F6F6F",
-                        }}
+                            // color: focusedField == name || formData[name] ? "#5D08B7" : "#6f6f6f",
+                        }} 
                     >
                         {placeholder}
                     </label>
@@ -191,18 +190,30 @@ export default function ContactForm() {
         <div style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
             <p style={labelStyle}>Are you an existing client?*</p>
             <div style={radioContainerStyle}>
-                <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
-                    <input type="radio" name="existingClient" value="Yes" onChange={handleChange} />
-                    <div style={customRadioStyle(formData.existingClient === "Yes")}></div>
-                    Yes
-                </label>
-    
-                <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
-                    <input type="radio" name="existingClient" value="No" onChange={handleChange} />
-                    <div style={customRadioStyle(formData.existingClient === "No")}></div>
-                    No
-                </label>
-            </div>
+                    <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
+                        <input
+                            type="radio"
+                            name="existingClient"
+                            value="Yes"
+                            onChange={handleChange}
+                            style={{ position: "absolute", opacity: 0 }}
+                        />
+                        <div style={customRadioStyle(formData.existingClient === "Yes")}></div>
+                        Yes
+                    </label>
+
+                    <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
+                        <input
+                            type="radio"
+                            name="existingClient"
+                            value="No"
+                            onChange={handleChange}
+                            style={{ position: "absolute", opacity: 0 }}
+                        />
+                        <div style={customRadioStyle(formData.existingClient === "No")}></div>
+                        No
+                    </label>
+                </div>
             {errors.existingClient && <span style={errorStyle}>{errors.existingClient}</span>}
         </div>
     

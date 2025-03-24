@@ -73,7 +73,7 @@ export const menuData = [
       {
         heading: "Trading Tools",
         submenu: [
-          { label: "Technical Analysis", href: "/technical-analysis" },
+          { label: "Technical Analysis", href: "https://analysis.leoprime.com/" },
           { label: "Economic Calendar", href: "/economic-calendar" },
           { label: "Forex Calculator", href: "/forex-calculator" },
           { label: "Client Sentiment", href: "/client-sentiment" },
@@ -99,7 +99,7 @@ export const menuData = [
         heading: "Corporate",
         submenu: [
           { label: "Safety of Funds", href: "#" },
-          { label: "Legal Documents", href: "#" }
+          { label: "Legal Documents", href: "/legal-doc" }
         ]
       }
     ]

@@ -24,8 +24,8 @@ export const menuData = [
       {
         heading: "Promotions",
         submenu: [
-          { label: "50% Welcome Bonus", href: "https://www.leoprime.com/50bonus" },
-          { label: "Demo Contest", href: "https://www.leoprime.com/contest" }
+          { label: "50% Welcome Bonus", href: "#" },
+          // { label: "Demo Contest", href: "https://www.leoprime.com/contest" }
         ]
       }
     ]
@@ -54,16 +54,17 @@ export const menuData = [
       {
         heading: "Desktop",
         submenu: [
-          { label: "Meta Trader 4", href: "/trading-platform" }
+          { label: "Meta Trader 4", href: "/trading-platform" },
+          { label: "MT4 Mobile", href: "/trading-platform" },
         ]
       },
-      {
-        heading: "Mobile",
-        submenu: [
-          { label: "Meta Trader 4 Mobile", href: "#" },
-          { label: "Leo All-in-One App", href: "#" }
-        ]
-      }
+      // {
+      //   heading: "Mobile",
+      //   submenu: [
+      //     { label: "Meta Trader 4 Mobile", href: "#" },
+      //     { label: "Leo All-in-One App", href: "#" }
+      //   ]
+      // }
     ]
   },
   {
@@ -77,7 +78,6 @@ export const menuData = [
           { label: "Economic Calendar", href: "/economic-calendar" },
           { label: "Forex Calculator", href: "/forex-calculator" },
           { label: "Client Sentiment", href: "/client-sentiment" },
-          { label: "VPS Hosting", href: "/vps-hosting" }
         ]
       }
     ]

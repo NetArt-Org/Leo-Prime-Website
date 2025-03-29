@@ -233,7 +233,8 @@ End Global
 =======================================*/
 
 .header-gray {
-  background-color: #f5f5f5 !important;
+  /* background-color: #f5f5f5 ; */
+  /* background: #F5F5F599 !important; */
   height: 430px !important;
   border-radius: 0 0 14px 14px;
 }

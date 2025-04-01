@@ -1,0 +1,179 @@
+.contactForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.inputContainer {
+    width: 46%; /* Two-column layout */
+    display: flex;
+    flex-direction: column;
+    margin: 14px 0;
+}
+
+@media (max-width: 768px) {
+    .inputContainer {
+        width: 100%;
+    }
+}
+
+.floatingInputContainer {
+    position: relative;
+    width: 100%;
+}
+
+.floatingInput {
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.floatingLabel {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.radioContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.radioInput {
+    position: absolute;
+    opacity: 0;
+}
+
+.radioChecked {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #DE3C98 0%, #5D08B7 100%);
+    border: 1px solid #DE3C98;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.radioUnchecked {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid #6F6F6F;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.submitButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to bottom left, #DE3C98 0%, #5D08B7 100%);
+    color: white;
+    background-origin: border-box;
+    background-clip: border-box;
+    width: 100%;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.selectInput {
+    padding: 10px 5px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.radioContainerStyle{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+    font-size: 16px
+}
+.fullWidthStyle{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0
+}
+.inputContainerStyle{
+    width: 46%; 
+        display: flex;
+        flex-direction: column;
+        margin: 14px 0
+}
+/* .selectInput:focus {
+    border-color: #007bff;
+    outline: none;
+} */
+
+/* Style the dropdown container similar to input fields */
+.inputContainer {
+    margin-bottom: 15px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}

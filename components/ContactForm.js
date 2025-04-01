@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Country, State } from "country-state-city";
+import styles from "./Contact.module.css";
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({
@@ -11,106 +13,6 @@ export default function ContactForm() {
         preferredContactTime: "",
         existingClient: "",
     });
-
-    const [errors, setErrors] = useState({});
-    const [focusedField, setFocusedField] = useState(""); 
-
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        setErrors({ ...errors, [e.target.name]: "" });
-    };
-
-    const validateForm = () => {
-        let newErrors = {};
-        Object.keys(formData).forEach((key) => {
-            if (!formData[key]) {
-                newErrors[key] = "This field is required to submit the query*";
-            }
-        });
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        if (!validateForm()) return;
-    };
-
-    const formStyle = {
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "10px",
-        width: "100%",
-        alignItems: "flex-end",
-        justifyContent: "space-between"
-    };
-
-    const inputContainerStyle = {
-        width: "46%", // Two-column layout
-        display: "flex",
-        flexDirection: "column",
-        margin: "14px 0"
-    };
-
-    const fullWidthStyle = {
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        margin: "8px 0"
-    };
-
-    const inputStyle = {
-        padding: "10px 5px",
-        border: "none",
-        borderBottom: "2px solid #ccc",
-        outline: "none",
-        fontSize: "16px",
-        fontWeight:"500"
-    };
-
-    const errorStyle = {
-        color: "red",
-        fontSize: "14px",
-        marginTop: "5px",
-    };
-
-    const labelStyle = {
-        fontWeight: "bold",
-        marginBottom: "5px",
-        fontSize: "16px",
-        marginTop: "0"
-    };
-
-    const radioContainerStyle = {
-        display: "flex",
-        alignItems: "center",
-        gap: "15px",
-        marginTop: "5px",
-        fontSize: "16px"
-    };
-
-    const buttonContainerStyle = {
-        width: "100%",
-        display: "flex",
-        justifyContent: "center", // Center-align button
-        marginTop: "25px",
-    };
-
-    const buttonStyle = {
-        padding: "10px 20px",
-        border: "none",
-        borderRadius: "10px",
-        background: "linear-gradient(to bottom left, #DE3C98 0%, #5D08B7 100%)",
-        color: "white",
-        backgroundOrigin: "border-box",  /* Ensures the background covers the padding */
-        backgroundClip: "border-box",
-        width: "100%",
-        fontFamily: "Poppins, sans-serif",
-        fontSize: "16px",
-        fontWeight: "500",
-        lineHeight: "30px",
-    };
     const customRadioStyle = (checked) => ({
         width: "12px",
         height: "12px",
@@ -123,73 +25,166 @@ export default function ContactForm() {
         cursor: "pointer",
         position: "relative",
     });
-    const floatingInputContainerStyle = {
-        position: "relative",
-        width: "100%",
+
+    const [errors, setErrors] = useState({});
+    const [focusedField, setFocusedField] = useState("");
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: "" });
     };
-    
-    const floatingInputStyle = {
-        ...inputStyle, // Reusing your existing input styles
-        width: "100%",
-        background: "transparent",
-        borderBottom: "2px solid #ccc",
-        transition: "all 0.3s ease",
+
+    const validateForm = () => {
+        let newErrors = {};
+        Object.keys(formData).forEach((key) => {
+            if (!formData[key]) {
+                newErrors[key] = "This field is required*";
+            }
+        });
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
-    
-    const floatingLabelStyle = {
-        position: "absolute",
-        left: "5px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        fontSize: "16px",
-        transition: "all 0.3s ease",
-        pointerEvents: "none",
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
     };
-    
-    
+    const timeSlots = [];
+    for (let i = 9; i < 18; i++) {
+        const startTime = `${i % 12 === 0 ? 12 : i % 12} ${i < 12 ? 'AM' : 'PM'}`;
+        const endTime = `${(i + 1) % 12 === 0 ? 12 : (i + 1) % 12} ${i + 1 < 12 ? 'AM' : 'PM'}`;
+        timeSlots.push(`${startTime} - ${endTime}`);
+    }
+
     return (
-        <>
-        <form onSubmit={onSubmit} style={formStyle} className="contact-form">
-        {[
-            { name: "firstName", placeholder: "First name*" },
-            { name: "secondName", placeholder: "Second name*" },
-            { name: "email", placeholder: "Email*" },
-            { name: "number", placeholder: "Phone number*", type: "tel" },
-            { name: "country", placeholder: "Country*" },
-            { name: "state", placeholder: "State*" },
-            { name: "preferredContactTime", placeholder: "Preferred contact time*" },
-        ].map(({ name, placeholder, type = "text" }) => (
-            <div key={name} style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
-                <div className="input-container" style={floatingInputContainerStyle}>
-                    <input
-                        type={type}
-                        name={name}
-                        style={floatingInputStyle}
-                        value={formData[name]}
-                        onChange={handleChange}
-                        onFocus={() => setFocusedField(name)}
-                        onBlur={() => setFocusedField("")}
-                        required
-                    />
-                    <label
-                        style={{
-                            ...floatingLabelStyle,
-                            top: formData[name] || focusedField === name ? "0px" : "50%",
-                            fontSize: formData[name] || focusedField === name ? "12px" : "16px",
-                            // color: focusedField == name || formData[name] ? "#5D08B7" : "#6f6f6f",
-                        }} 
-                    >
-                        {placeholder}
-                    </label>
+        <form onSubmit={onSubmit} className={`${styles.contactForm} contact-form`}>
+            {[
+                { name: "firstName", placeholder: "First name*" },
+                { name: "secondName", placeholder: "Second name*" },
+                { name: "email", placeholder: "Email*" },
+                { name: "number", placeholder: "Phone number*", type: "tel" },
+            ].map(({ name, placeholder, type = "text" }) => (
+                <div key={name} className={styles.inputContainer}>
+                    <div className={`${styles.floatingInputContainer} input-container`}>
+                        <input
+                            type={type}
+                            name={name}
+                            className={styles.floatingInput}
+                            value={formData[name]}
+                            onChange={handleChange}
+                            onFocus={() => setFocusedField(name)}
+                            onBlur={() => setFocusedField("")}
+                            required
+                        />
+                        <label
+                            className={styles.floatingLabel}
+                            style={{
+                                top: formData[name] || focusedField === name ? "0px" : "50%",
+                                fontSize: formData[name] || focusedField === name ? "12px" : "16px",
+                            }}
+                        >
+                            {placeholder}
+                        </label>
+                    </div>
+                    {errors[name] && <span className={styles.error}>{errors[name]}</span>}
                 </div>
-                {errors[name] && <span style={errorStyle}>{errors[name]}</span>}
+            ))}
+
+            {/* Country Dropdown */}
+            <div className={styles.inputContainer}>
+                <div className={`${styles.floatingInputContainer} input-container`}>
+                    <label
+                        className={styles.floatingLabel}
+                        style={{
+                            top: formData.country || focusedField === "country" ? "0px" : "50%",
+                            fontSize: formData.country || focusedField === "country" ? "12px" : "16px",
+                        }}
+                    >
+                        Country*
+                    </label>
+                    <select
+                        name="country"
+                        value={formData.country}
+                        onChange={handleChange}
+                        className={styles.selectInput}
+                        required
+                    >
+                        <option value=""></option>
+                        {Country.getAllCountries().map((country) => (
+                            <option key={country.isoCode} value={country.isoCode}>
+                                {country.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                {errors.country && <span className={styles.error}>{errors.country}</span>}
             </div>
-        ))}
-    
-        {/* Radio Button for Existing Client */}
-        <div style={window.innerWidth < 768 ? fullWidthStyle : inputContainerStyle}>
-            <p style={labelStyle}>Are you an existing client?*</p>
-            <div style={radioContainerStyle}>
+
+            {/* State Dropdown */}
+            <div className={styles.inputContainer}>
+                <div className={`${styles.floatingInputContainer} input-container`}>
+                    <label
+                        className={styles.floatingLabel}
+                        style={{
+                            top: formData.state || focusedField === "state" ? "0px" : "50%",
+                            fontSize: formData.state || focusedField === "state" ? "12px" : "16px",
+                        }}
+                    >
+                        State*
+                    </label>
+                    <select
+                        name="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                        className={styles.selectInput}
+                        disabled={!formData.country}
+                        required
+                    >
+                        <option value=""></option>
+                        {formData.country &&
+                            State.getStatesOfCountry(formData.country).map((state) => (
+                                <option key={state.isoCode} value={state.isoCode}>
+                                    {state.name}
+                                </option>
+                            ))}
+                    </select>
+                </div>
+                {errors.state && <span className={styles.error}>{errors.state}</span>}
+            </div>
+            {/* Preferred Contact Time Dropdown */}
+            <div className={styles.inputContainer}>
+                <div className={`${styles.floatingInputContainer} input-container`}>
+                    <label
+                        className={styles.floatingLabel}
+                        style={{
+                            top: formData.preferredContactTime || focusedField === "preferredContactTime" ? "0px" : "50%",
+                            fontSize: formData.preferredContactTime || focusedField === "preferredContactTime" ? "12px" : "16px",
+                        }}
+                    >
+                        Preferred Contact Time*
+                    </label>
+                    <select
+                        name="preferredContactTime"
+                        value={formData.preferredContactTime}
+                        onChange={handleChange}
+                        className={styles.selectInput}
+                        required
+                    >
+                        <option value=""></option>
+                        {timeSlots.map((time, index) => (
+                            <option key={index} value={time}>
+                                {time}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                {errors.preferredContactTime && <span className={styles.error}>{errors.preferredContactTime}</span>}
+            </div>
+            {/* Radio Button for Existing Client */}
+            <div className={window.innerWidth < 768 ? styles.fullWidthStyle : styles.inputContainerStyle}>
+                <p className={styles.label}>Are you an existing client?*</p>
+                <div className={styles.radioContainerStyle}>
+
                     <label style={{ display: "flex", alignItems: "center", gap: "5px", cursor: "pointer" }}>
                         <input
                             type="radio"
@@ -214,16 +209,13 @@ export default function ContactForm() {
                         No
                     </label>
                 </div>
-            {errors.existingClient && <span style={errorStyle}>{errors.existingClient}</span>}
-        </div>
-    
-        {/* Submit Button */}
-        <div style={buttonContainerStyle}>
-            <button type="submit" style={buttonStyle}>
-                Send enquiry
-            </button>
-        </div>
-    </form>
-       </>
+                {errors.existingClient && <span className={styles.error}>{errors.existingClient}</span>}
+            </div>
+            <div className={styles.buttonContainer}>
+                <button type="submit" className={styles.submitButton}>
+                    Send enquiry
+                </button>
+            </div>
+        </form>
     );
 }

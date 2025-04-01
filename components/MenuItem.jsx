@@ -54,12 +54,12 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, se
                 handleClick={handleClick}
               />
               <div className="contactSection" >
-                <a className="socialLinks" href="#" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="#" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="#" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="#" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="#" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="#" target="_blank">LinkedIn<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="tel:+971(0)44470023" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="mailto:support@leoprime.com" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="https://www.instagram.com/leoprimefx/" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="https://twitter.com/LeoPrimeFx" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="https://www.facebook.com/LeoPrimeForexBrokers/" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+                <a className="socialLinks" href="https://www.linkedin.com/company/leo-prime" target="_blank">LinkedIn<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
               </div>
             </Container>
           </div>

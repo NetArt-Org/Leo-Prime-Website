@@ -36,14 +36,24 @@ export default function ContactForm() {
 
     const validateForm = () => {
         let newErrors = {};
+    
+        // Email format validation using a regular expression
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    
         Object.keys(formData).forEach((key) => {
             if (!formData[key]) {
                 newErrors[key] = "This field is required*";
             }
         });
+    
+        if (formData.email && !emailRegex.test(formData.email)) {
+            newErrors.email = "Please enter a valid email address*";
+        }
+    
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
+    
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -74,7 +84,7 @@ export default function ContactForm() {
                             onChange={handleChange}
                             onFocus={() => setFocusedField(name)}
                             onBlur={() => setFocusedField("")}
-                            required
+                            // required
                         />
                         <label
                             className={styles.floatingLabel}
@@ -107,7 +117,7 @@ export default function ContactForm() {
                         value={formData.country}
                         onChange={handleChange}
                         className={styles.selectInput}
-                        required
+                        // required
                     >
                         <option value=""></option>
                         {Country.getAllCountries().map((country) => (
@@ -138,7 +148,7 @@ export default function ContactForm() {
                         onChange={handleChange}
                         className={styles.selectInput}
                         disabled={!formData.country}
-                        required
+                        // required
                     >
                         <option value=""></option>
                         {formData.country &&
@@ -168,7 +178,7 @@ export default function ContactForm() {
                         value={formData.preferredContactTime}
                         onChange={handleChange}
                         className={styles.selectInput}
-                        required
+                        // required
                     >
                         <option value=""></option>
                         {timeSlots.map((time, index) => (

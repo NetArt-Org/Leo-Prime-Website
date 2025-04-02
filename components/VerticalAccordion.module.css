@@ -73,16 +73,28 @@
 .innerElement {
   opacity: 0;
   transition: opacity 0s;
-  height: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out, visibility 0s linear 0.4s;
   padding: 20px;
-  background: url("https://site-assets.plasmic.app/5587eb5a9f6e023b876337f5b33e3b0f.svg");
+  /* background: url("https://site-assets.plasmic.app/5587eb5a9f6e023b876337f5b33e3b0f.svg");
   background-size: cover;
-  background-position: center;
+  background-position: center; */
   display: none;
   flex-direction: column;
   justify-content: space-between;
 }
-
+.expanded{
+  background: url("https://site-assets.plasmic.app/5587eb5a9f6e023b876337f5b33e3b0f.svg");
+  background-size: cover;
+  background-position: center;
+}
+.expanded .innerElement {
+  opacity: 1;
+  visibility: visible;
+  max-height: 500px; /* Adjust based on your content */
+  transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out;
+}
 .innerElement h3 {
   color: #535353;
   font-weight: 600;
@@ -136,6 +148,9 @@
 }
 
 @media (max-width: 1024px) {
+  .expanded {
+    min-height: 450px !important;
+  }
     .main {
       flex-direction: column;
       width: 100%;
@@ -154,7 +169,11 @@
         transition: height 0.5s;
         height: 60px;
       }
-      .expanded {
-        height: 450px !important;
+      .innerElement p{
+        font-size: 15px;
+      }
+      .expanded .flexContainer {
+        gap: 6px;
+        padding: 8px 10px;
       }
   }

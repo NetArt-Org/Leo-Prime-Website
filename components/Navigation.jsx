@@ -10,7 +10,6 @@ const Navigation = ({ activeMenu }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const drawerButtonRef = useRef(null);
-  console.log("SET IS DROPDOWN", isDropdownOpen)
   return (
     <header className={`nav__header_mobile md:nav__header  ${isDropdownOpen ? "header-gray" : null}`}>
       <Container>
@@ -32,8 +31,8 @@ const Navigation = ({ activeMenu }) => {
           <div className="hidden md:flex flex menu-gap" style={{ position: "relative",alignItems:"center" }}>
             <MegaMenu setIsDropdownOpen={setIsDropdownOpen} activeMenu={activeMenu} />
             <div className="hidden md:flex flex">
-              <Link href="#" className='header-btn gradient-border'>Sign in</Link>
-              <Link href="#" className='header-btn gradient-banner-button'>Register</Link>
+              <Link href="https://www.leoprime.com/user/" className='header-btn gradient-border'>Sign in</Link>
+              <Link href="https://www.leoprime.com/register" className='header-btn gradient-banner-button'>Register</Link>
             </div>
           </div>
           {/* <UserProfile /> */}

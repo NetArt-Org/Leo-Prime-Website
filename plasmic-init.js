@@ -4,6 +4,7 @@ import SubscribeForm from "./components/SubscribeForm";
 import Navigation from "./components/Navigation";
 import SwiperSlider from "./components/SwiperSlider";
 import VerticalAccordion from "./components/VerticalAccordion";
+import MarkDownConverter from "./components/MarkDownConverter";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -32,6 +33,12 @@ export const PLASMIC = initPlasmicLoader({
 PLASMIC.registerComponent(ContactForm, {
   name: 'ContactForm',
   props: {
+  },
+});
+PLASMIC.registerComponent(MarkDownConverter, {
+  name: 'MarkDownConverter',
+  props: {
+    children:'string'
   },
 });
 PLASMIC.registerComponent(SubscribeForm, {

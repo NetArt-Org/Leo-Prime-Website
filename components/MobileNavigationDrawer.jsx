@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 import MegaMenu from "./MegaMenu";
 import Link from "next/link";
 
-const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef }) => {
+const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef,authLinks,menuData,appPromo,contactSection }) => {
   const [clicked, setClicked] = useState(null);
   const drawerRef = useRef(null);
 
@@ -55,11 +55,15 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
           </button>
         </div>
         <div>
-          <MegaMenu handleToggle={handleToggle} clicked={clicked} setIsDrawerOpen={setIsDrawerOpen} />
-          <div className="flex" style={{ gap: "5px",display:"flex",margin:"20px 20px 20px 0" }}>
-          <Link href="https://www.leoprime.com/user" className='header-btn gradient-border'>Sign in</Link>
-          <Link href="https://www.leoprime.com/register" className='header-btn gradient-banner-button'>Register</Link>
-            </div>
+          <MegaMenu appPromo={appPromo} handleToggle={handleToggle} clicked={clicked} setIsDrawerOpen={setIsDrawerOpen} menuData={menuData} contactSection={contactSection}/>
+          <div className="flex" style={{ gap: "5px", display: "flex", margin: "20px 20px 20px 0" }}>
+            <Link href={authLinks.signIn.href} className='header-btn gradient-border'>
+              {authLinks.signIn.label}
+            </Link>
+            <Link href={authLinks.register.href} className='header-btn gradient-banner-button'>
+              {authLinks.register.label}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

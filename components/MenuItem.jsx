@@ -6,7 +6,7 @@ import Container from "./Container";
 import DropdownContent from "./DropdownContent";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, setIsDropdownOpen,activeMenu }) => {
+const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, setIsDropdownOpen, activeMenu, appPromo,contactSection }) => {
   const pathname = usePathname();
 
   const handleClick = () => {
@@ -52,14 +52,21 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, se
                 submenuscontent={children}
                 setIsDrawerOpen={setIsDrawerOpen}
                 handleClick={handleClick}
+                appPromo={appPromo}
               />
-              <div className="contactSection" >
-                <a className="socialLinks" href="tel:+971(0)44470023" target="_blank">Contact<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="mailto:support@leoprime.com" target="_blank">Mail Id<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="https://www.instagram.com/leoprimefx/" target="_blank">Instagram<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="https://twitter.com/LeoPrimeFx" target="_blank">Twitter<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="https://www.facebook.com/LeoPrimeForexBrokers/" target="_blank">Facebook<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
-                <a className="socialLinks" href="https://www.linkedin.com/company/leo-prime" target="_blank">LinkedIn<img src="/arrow-up-right-03.svg" alt="Arrow" /></a>
+              <div className="contactSection">
+                {contactSection.map((item, index) => (
+                  <a
+                    className="socialLinks"
+                    key={index}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                    <img src={item.icon} alt="Arrow" />
+                  </a>
+                ))}
               </div>
             </Container>
           </div>

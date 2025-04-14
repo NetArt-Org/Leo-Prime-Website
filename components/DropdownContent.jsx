@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const DropdownContent = ({ submenuscontent, setIsDrawerOpen, handleClick }) => {
+const DropdownContent = ({ submenuscontent, setIsDrawerOpen, handleClick, appPromo }) => {
   return (
     <div className="dropdown_content">
       {submenuscontent.map((item, index) => (
@@ -24,10 +24,14 @@ const DropdownContent = ({ submenuscontent, setIsDrawerOpen, handleClick }) => {
           </section>
         </React.Fragment>
       ))}
-      <div className='fixedColumn'>
-        <p>Trade anywhere, anytime from our mobile app</p>
-        <img src="https://site-assets.plasmic.app/94759ca717a1bc5ed407e20bac348d07.svg" alt="Mobile App" />
-        <img src="https://site-assets.plasmic.app/af1036e1db328cb0ff9b70b5dc8df44c.svg" alt="Mobile App" />
+      {/* App Promo Section */}
+      <div className="fixedColumn">
+        <p>{appPromo.text}</p>
+        {appPromo.links.map((link, index) => (
+          <a href={link.href} key={index} target="_blank" rel="noopener noreferrer">
+            <img src={link.imageSrc} alt={link.alt} />
+          </a>
+        ))}
       </div>
     </div>
   );

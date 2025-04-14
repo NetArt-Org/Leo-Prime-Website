@@ -55,7 +55,9 @@ PLASMIC.registerComponent(VerticalAccordion, {
 PLASMIC.registerComponent(Navigation, {
   name: 'Navigation',
   props: {
-    activeMenu:'string'
+    activeMenu:'string',
+    headerConfig:'object',
+    menuData:'object'
   },
 });
 PLASMIC.registerComponent(SwiperSlider, {

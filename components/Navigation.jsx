@@ -5,11 +5,15 @@ import UserProfile from './UserProfile';
 import { AlignJustify } from 'lucide-react';
 import MegaMenu from './MegaMenu';
 import MobileNavigationDrawer from './MobileNavigationDrawer';
+// import { headerConfig } from '@/menuData';
+// import { menuData } from '@/menuData';
 
-const Navigation = ({ activeMenu }) => {
+const Navigation = ({ activeMenu,headerConfig,menuData }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const drawerButtonRef = useRef(null);
+  const { logo, authLinks,appPromo,contactSection } = headerConfig;
+  console.log("APP PROMO", appPromo)
   return (
     <header className={`nav__header_mobile md:nav__header  ${isDropdownOpen ? "header-gray" : null}`}>
       <Container>
@@ -23,16 +27,22 @@ const Navigation = ({ activeMenu }) => {
             {/* Mobile Hamburger menu */}
             <AlignJustify />
           </button>
-          <Link className="logo__link logo-container" href="/">
-            <img src="/logo.svg" alt="Logo" className='logo-icon'/>
-            <div class="logo-text" style={{color:"#5D08B7",fontWeight:"normal"}}>leoprime</div>
+           {/* Logo */}
+           <Link className="logo__link logo-container" href={logo.link}>
+            <img src={logo.imageSrc} alt="Logo" className="logo-icon" />
+            <div className="logo-text" style={{ color: "#5D08B7", fontWeight: "normal" }}>
+              {logo.text}
+            </div>
           </Link>
-
-          <div className="hidden md:flex flex menu-gap" style={{ position: "relative",alignItems:"center" }}>
-            <MegaMenu setIsDropdownOpen={setIsDropdownOpen} activeMenu={activeMenu} />
+          <div className="hidden md:flex flex menu-gap" style={{ position: "relative", alignItems: "center" }}>
+            <MegaMenu setIsDropdownOpen={setIsDropdownOpen} activeMenu={activeMenu} menuData={menuData} contactSection={contactSection} appPromo={appPromo}/>
             <div className="hidden md:flex flex">
-              <Link href="https://www.leoprime.com/user/" className='header-btn gradient-border'>Sign in</Link>
-              <Link href="https://www.leoprime.com/register" className='header-btn gradient-banner-button'>Register</Link>
+              <Link href={authLinks.signIn.href} className="header-btn gradient-border">
+                {authLinks.signIn.label}
+              </Link>
+              <Link href={authLinks.register.href} className="header-btn gradient-banner-button">
+                {authLinks.register.label}
+              </Link>
             </div>
           </div>
           {/* <UserProfile /> */}
@@ -40,7 +50,7 @@ const Navigation = ({ activeMenu }) => {
           {/* Mobile navigation drawer */}
           <div className="md:hidden absolute">
             <MobileNavigationDrawer
-              {...{ isDrawerOpen, setIsDrawerOpen, drawerButtonRef }}
+              {...{ isDrawerOpen, setIsDrawerOpen, drawerButtonRef,authLinks,menuData,appPromo,contactSection }}
             />
           </div>
         </div>

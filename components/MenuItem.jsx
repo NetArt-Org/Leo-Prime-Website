@@ -18,7 +18,17 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, se
         onMouseEnter={() => children && setIsDropdownOpen(true)}
         onMouseLeave={() => children && setIsDropdownOpen(false)}
       >
-        <div className={`nav_item_content ${activeMenu == label ? "menu-active" : "main-menu"}`}>
+        <div className={`nav_item_content ${activeMenu == label ? "menu-active" : "main-menu"}`}
+         onClick={(e) => {
+          if (children) {
+            e.preventDefault(); // Prevent default only when there's a dropdown
+            onToggle();         // Trigger toggle
+          } else {
+            setIsDrawerOpen && setIsDrawerOpen(false); // Close drawer for simple links
+          }
+          document.activeElement?.blur();
+        }}
+        >
           <Link
             href={href}
             className={`${pathname === href ? "active" : ""}`}

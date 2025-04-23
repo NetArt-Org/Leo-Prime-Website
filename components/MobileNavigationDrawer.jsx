@@ -64,7 +64,7 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
               {authLinks.register.label}
             </Link>
           </div>
-          <div  style={{display:"flex",gap:"20px",flexWrap:"wrap",paddingTop:"40px",fontSize:"14px"}}>
+          <div  style={{display:"flex",gap:"20px",flexWrap:"wrap",padding:"40px 0.5rem",fontSize:"14px"}}>
                 {contactSection.map((item, index) => (
                   <a
                     className="socialLinks"

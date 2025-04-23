@@ -64,7 +64,7 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
               {authLinks.register.label}
             </Link>
           </div>
-          <div  style={{display:"flex",gap:"20px",flexWrap:"wrap",paddingTop:"40px"}}>
+          <div  style={{display:"flex",gap:"20px",flexWrap:"wrap",paddingTop:"40px",fontSize:"14px"}}>
                 {contactSection.map((item, index) => (
                   <a
                     className="socialLinks"
@@ -72,6 +72,7 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    style={{fontSize:"14px"}}
                   >
                     {item.label}
                     <img src={item.icon} alt="Arrow" />

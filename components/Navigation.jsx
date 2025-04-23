@@ -13,7 +13,6 @@ const Navigation = ({ activeMenu,headerConfig,menuData }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const drawerButtonRef = useRef(null);
   const { logo, authLinks,appPromo,contactSection } = headerConfig;
-  console.log("APP PROMO", appPromo)
   return (
     <header className={`nav__header_mobile md:nav__header  ${isDropdownOpen ? "header-gray" : null}`}>
       <Container>

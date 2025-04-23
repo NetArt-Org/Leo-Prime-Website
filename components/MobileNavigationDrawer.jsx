@@ -56,7 +56,7 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
         </div>
         <div>
           <MegaMenu appPromo={appPromo} handleToggle={handleToggle} clicked={clicked} setIsDrawerOpen={setIsDrawerOpen} menuData={menuData} contactSection={contactSection}/>
-          <div className="flex" style={{ gap: "5px", display: "flex", margin: "20px 20px 20px 0" }}>
+          <div className="flex" style={{ gap: "5px", display: "flex", margin: "0" }}>
             <Link href={authLinks.signIn.href} className='header-btn gradient-border'>
               {authLinks.signIn.label}
             </Link>
@@ -64,6 +64,20 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
               {authLinks.register.label}
             </Link>
           </div>
+          <div  style={{display:"flex",gap:"20px",flexWrap:"wrap",paddingTop:"40px"}}>
+                {contactSection.map((item, index) => (
+                  <a
+                    className="socialLinks"
+                    key={index}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                    <img src={item.icon} alt="Arrow" />
+                  </a>
+                ))}
+              </div>
         </div>
       </div>
     </div>

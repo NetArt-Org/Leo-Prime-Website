@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const DropdownContent = ({ submenuscontent, setIsDrawerOpen, handleClick, appPromo }) => {
   return (
@@ -29,7 +30,7 @@ const DropdownContent = ({ submenuscontent, setIsDrawerOpen, handleClick, appPro
         <p>{appPromo.text}</p>
         {appPromo.links.map((link, index) => (
           <a href={link.href} key={index} target="_blank" rel="noopener noreferrer">
-            <img src={link.imageSrc} alt={link.alt} />
+            <Image src={link.imageSrc} alt={link.alt} width={170} height={50} />
           </a>
         ))}
       </div>

@@ -29,9 +29,9 @@ const VerticalAccordion = ({accordionData}) => {
                     />
                     <div className={`${styles.text} ${styles.blueGradientText}`}>{item.infoTxt}</div>
                   </div>
-                  <img className={styles.arrowImg} src="https://site-assets.plasmic.app/cb0794dc56bf4ae822fe18927653d0b6.svg" />
+                  <Image width={56} height={32} className={styles.arrowImg} src="https://site-assets.plasmic.app/cb0794dc56bf4ae822fe18927653d0b6.svg" />
                 </div>
-                <img className={styles.mainImg} src={item.img} />
+                <Image width={200} height={200} className={styles.mainImg} src={item.img} />
                 <h3>{item.title}</h3>
                 <p>{item.content}</p>
               </Link>

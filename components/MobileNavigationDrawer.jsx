@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { X } from "lucide-react";
 import MegaMenu from "./MegaMenu";
 import Link from "next/link";
+import Image from "next/image";
 
 const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef,authLinks,menuData,appPromo,contactSection }) => {
   const [clicked, setClicked] = useState(null);
@@ -75,7 +76,7 @@ const MobileNavigationDrawer = ({ isDrawerOpen, setIsDrawerOpen, drawerButtonRef
                     style={{fontSize:"14px"}}
                   >
                     {item.label}
-                    <img src={item.icon} alt="Arrow" />
+                    <Image src={item.icon} alt="Arrow" width={16} height={16} />
                   </a>
                 ))}
               </div>

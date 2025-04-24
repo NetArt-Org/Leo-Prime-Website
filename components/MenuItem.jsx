@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Container from "./Container";
 import DropdownContent from "./DropdownContent";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import Image from "next/image";
 
 const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, setIsDropdownOpen, activeMenu, appPromo,contactSection }) => {
   const pathname = usePathname();
@@ -74,7 +75,7 @@ const MenuItem = ({ label, href, children, onToggle, active, setIsDrawerOpen, se
                     rel="noopener noreferrer"
                   >
                     {item.label}
-                    <img src={item.icon} alt="Arrow" />
+                    <Image src={item.icon} alt="Arrow" width={16} height={16} />
                   </a>
                 ))}
               </div>

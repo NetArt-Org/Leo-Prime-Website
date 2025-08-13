@@ -32,7 +32,7 @@ const SubscribeForm = () => {
   };
 
   const buttonStyle = {
-    background: "linear-gradient(to bottom left, #DE3C98 0%, #5D08B7 100%)",
+    background: "linear-gradient(to bottom left, #000000 0%, #eb2427 100%)",
     backgroundOrigin: "border-box",  /* Ensures the background covers the padding */
     backgroundClip: "border-box",  /* Makes sure the gradient covers the whole button */
     padding: "12px 20px",

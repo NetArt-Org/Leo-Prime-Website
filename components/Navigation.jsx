@@ -27,11 +27,12 @@ const Navigation = ({ activeMenu,headerConfig,menuData }) => {
             <AlignJustify />
           </button>
            {/* Logo */}
-           <Link className="logo__link logo-container" href={logo.link}>
+           <Link className="logo__link" href={logo.link}>
+           {/* <Link className="logo__link logo-container" href={logo.link}> */}
             <img src={logo.imageSrc} alt="Logo" className="logo-icon" />
-            <div className="logo-text" style={{ color: "#5D08B7", fontWeight: "normal" }}>
+            {/* <div className="logo-text" style={{ color: "#5D08B7", fontWeight: "normal" }}>
               {logo.text}
-            </div>
+            </div> */}
           </Link>
           <div className="hidden md:flex flex menu-gap" style={{ position: "relative", alignItems: "center" }}>
             <MegaMenu setIsDropdownOpen={setIsDropdownOpen} activeMenu={activeMenu} menuData={menuData} contactSection={contactSection} appPromo={appPromo}/>

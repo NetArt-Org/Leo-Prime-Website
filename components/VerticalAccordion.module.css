@@ -56,14 +56,14 @@
   position: relative;
   border-radius: 32px;
   padding: 8px 25px;
-  border: 1px solid #0c66c9;
+  border: 1px solid #eb2427;
 }
 .expanded .ParentFlex {
   display: flex;
   justify-content: space-between;
 }
 .blueGradientText {
-  background: linear-gradient(to bottom, #317fd4 0%, #002f63 100%);
+  background: linear-gradient(to bottom, #eb2427 0%, #000000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 100%;

@@ -84,7 +84,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: linear-gradient(to right, #DE3C98 0%, #5D08B7 100%);
+    background: linear-gradient(to bottom left, #000000 0%, #eb2427 100%);
     border: 1px solid #DE3C98;
     display: inline-block;
     cursor: pointer;
@@ -113,7 +113,7 @@
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(to bottom left, #DE3C98 0%, #5D08B7 100%);
+    background: linear-gradient(to bottom left, #000000 0%, #eb2427 100%);
     color: white;
     background-origin: border-box;
     background-clip: border-box;

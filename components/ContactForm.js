@@ -18,9 +18,9 @@ export default function ContactForm() {
         height: "12px",
         borderRadius: "50%",
         background: checked
-            ? "linear-gradient(to right, #DE3C98 0%, #5D08B7 100%)"
+            ? "linear-gradient(to bottom left, #000000 0%, #eb2427 100%)"
             : "transparent",
-        border: checked ? "1px solid #DE3C98" : "1px solid #6F6F6F",
+        border: checked ? "1px solid #000" : "1px solid #000",
         display: "inline-block",
         cursor: "pointer",
         position: "relative",
